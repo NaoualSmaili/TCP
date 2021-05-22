@@ -22,8 +22,18 @@ public class Test {
         new Thread(new TCPClientTimeout()).start();
     }
 
-    public static void main(String[] args) {
+    public static void Q7(String[] args) {
         new Thread(new TCPServerLMessage()).start();
         new Thread(new TCPClientLMessage()).start();
+    }
+
+    public static void Q8(String[] args) {
+        new Thread(new TCPServerLMessage()).start();
+        new Thread(new TCPClientFile()).start();
+    }
+
+    public static void main(String[] args) {
+        new Thread(new TCPServerLMessage()).start();
+        new Thread(new TCPClientFile()).start();
     }
 }

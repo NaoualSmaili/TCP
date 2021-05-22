@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-class TCPServerBuilder extends TCPMessage{
+class TCPServerBuilder extends TCPFile{
     ServerSocket ss ;
     Socket s ;
     InetSocketAddress isA ;

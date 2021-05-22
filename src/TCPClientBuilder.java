@@ -1,12 +1,14 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-class TCPClientBuilder extends TCPMessage{
+class TCPClientBuilder extends TCPFile{
     Socket s;
     InetSocketAddress isA;
     OutputStream out ;
+    InputStream in;
     final int timer = 5000;
 
     TCPClientBuilder() {
