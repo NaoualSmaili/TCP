@@ -13,14 +13,17 @@ public class Test {
     }
 
     public static void Q5(String[] args) {
-        new Thread(new TCPServerLMsg()).start();
-        new Thread(new TCPClientLMsg()).start();
+        new Thread(new TCPServerMessage()).start();
+        new Thread(new TCPClientMessage()).start();
     }
 
-    public static void main(String[] args) {
+    public static void Q6(String[] args) {
         new Thread(new TCPServerTimeout()).start();
         new Thread(new TCPClientTimeout()).start();
     }
 
-
+    public static void main(String[] args) {
+        new Thread(new TCPServerLMessage()).start();
+        new Thread(new TCPClientLMessage()).start();
+    }
 }

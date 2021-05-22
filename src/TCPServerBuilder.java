@@ -9,6 +9,7 @@ class TCPServerBuilder extends TCPMessage{
     Socket s ;
     InetSocketAddress isA ;
     InputStream in;
+    final int timer = 5000;
 
     TCPServerBuilder() {
         ss = null;
@@ -19,6 +20,7 @@ class TCPServerBuilder extends TCPMessage{
     protected void setSocket() throws IOException {
         this.isA = new InetSocketAddress("localhost", 8083);
         this.ss = new ServerSocket(this.isA.getPort());
+        //this.s.setSoTimeout(timer);
         setStreamBuffer(ss.getReceiveBufferSize());
     }
 

@@ -7,7 +7,7 @@ class TCPClientBuilder extends TCPMessage{
     Socket s;
     InetSocketAddress isA;
     OutputStream out ;
-    String msOut = "Aujourd'hui, TP ASR Java." ;
+    final int timer = 5000;
 
     TCPClientBuilder() {
         s = null;
@@ -17,6 +17,7 @@ class TCPClientBuilder extends TCPMessage{
     protected void setSocket() throws IOException {
         isA = new InetSocketAddress("localhost", 8083);
         s = new Socket(isA.getHostName(), isA.getPort());
+        //this.s.setSoTimeout(timer);
         this.setStreamBuffer(this.s.getReceiveBufferSize());
     }
 }

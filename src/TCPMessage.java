@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.Random;
 
 public class TCPMessage extends TCPBuffer{
     /**
@@ -49,4 +50,16 @@ public class TCPMessage extends TCPBuffer{
         return buffer.length;
     }
 
+    void loopWriteMessage(OutputStream out, int loop) throws IOException {
+        for(int i=0;i<loop;i++) {
+            fillAtRandom(buffer);
+            out.write(buffer);
+            out.flush();
+        }
+    }
+    private void fillAtRandom(byte[] buffer) {
+        for(int i=0; i<buffer.length; i++)
+            buffer[i] = (byte)r.nextInt(256);
+    }
+    private Random r = new Random();
 }

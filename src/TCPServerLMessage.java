@@ -1,17 +1,17 @@
 import java.io.IOException;
 
-class TCPServerMessage extends TCPServerBuilder implements Runnable {
+public class TCPServerLMessage extends TCPServerBuilder implements Runnable{
     private String msIn;
 
-    public TCPServerMessage() {
+    public TCPServerLMessage() {
     }
 
     public void run() {
         try {
             this.setSocket();
-            System.out.println("TCPServerMessage launched ...");
+            System.out.println("TCPServerLMsg launched ...");
 
-            while(true) {
+            while(true){
                 this.s = this.ss.accept();
                 this.in = this.s.getInputStream();
                 this.msIn = this.readMessage(this.in);
@@ -25,7 +25,7 @@ class TCPServerMessage extends TCPServerBuilder implements Runnable {
             } catch (IOException e) {
             }
 
-            System.out.println("Exception TCPServerMessage");
+            System.out.println("Exception TCPServerLMessage");
         }
     }
 }
