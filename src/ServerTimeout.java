@@ -1,8 +1,8 @@
 import java.io.IOException;
 import java.net.Socket;
 
-class ServerTimeout implements Runnable {
-    private Socket s;
+class ServerTimeout extends TCPClientBuilder implements Runnable {
+    private String msIn;
 
     ServerTimeout(Socket s) {
         this.s = s;
@@ -11,8 +11,11 @@ class ServerTimeout implements Runnable {
     public void run() {
         try {
             s.setSoTimeout(2000);
-            /** read operation, to do … */
-
+            setStreamBuffer(this.s.getReceiveBufferSize());
+            sInfo("s2", this.s);
+            in = s.getInputStream();
+            msIn = readMessage(this.in);
+            in.close();
             s.close();
         } catch (IOException e) {
             System.out.println("IOException ServerTimeout");

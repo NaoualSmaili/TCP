@@ -6,7 +6,7 @@ class TCPServerTimeout extends TCPServerBuilder implements Runnable {
     public void run() {
         try {
             ss = new ServerSocket(8083);
-            ss.setSoTimeout(10000);
+            ss.setSoTimeout(timer);
             while (true) {
                 s = ss.accept();
                 new Thread(new ServerTimeout(s)).start();
@@ -18,4 +18,5 @@ class TCPServerTimeout extends TCPServerBuilder implements Runnable {
 
     private ServerSocket ss;
     private Socket s;
+
 }

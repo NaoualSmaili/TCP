@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,7 +9,8 @@ class TCPServerBuilder extends TCPFile{
     ServerSocket ss ;
     Socket s ;
     InetSocketAddress isA ;
-    InputStream in;
+    OutputStream out = null;
+    InputStream in = null;
     final int timer = 5000;
 
     TCPServerBuilder() {

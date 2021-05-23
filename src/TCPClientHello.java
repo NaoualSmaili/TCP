@@ -1,6 +1,9 @@
 import java.io.IOException;
 
 class TCPClientHello extends TCPClientBuilder implements Runnable {
+    public TCPClientHello() {
+    }
+
     public void run() {
         try {
             System.out.println("TCPClientHello launched ...");

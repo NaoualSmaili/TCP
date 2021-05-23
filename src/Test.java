@@ -2,6 +2,11 @@ public class Test {
     public Test() {
     }
 
+    public static void Q1(String[] args) {
+        new Thread(new TCPServer()).start();
+        new Thread(new TCPClient()).start();
+    }
+
     public static void Q2(String[] args) {
         new Thread(new TCPServerHello()).start();
         new Thread(new TCPClientHello()).start();
@@ -25,11 +30,6 @@ public class Test {
     public static void Q7(String[] args) {
         new Thread(new TCPServerLMessage()).start();
         new Thread(new TCPClientLMessage()).start();
-    }
-
-    public static void Q8(String[] args) {
-        new Thread(new TCPServerLMessage()).start();
-        new Thread(new TCPClientFile()).start();
     }
 
     public static void main(String[] args) {

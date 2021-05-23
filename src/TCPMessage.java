@@ -62,4 +62,28 @@ public class TCPMessage extends TCPBuffer{
             buffer[i] = (byte)r.nextInt(256);
     }
     private Random r = new Random();
+
+
+    private long n;
+    private long scount;
+    void loopReadMessage(InputStream in) throws IOException {
+        this.n = this.count = 0;
+        this.scount = 0L;
+
+        do {
+            this.count = in.read(this.buffer);
+            if (this.count > 0) {
+                this.scount += this.count;
+                ++this.n;
+            }
+        } while(this.count > 0);
+
+        System.out.println("read \t" + this.kb(this.scount) + "\t Kbytes \t" + this.n + "\t loops");
+    }
+    private double kb(long l) {
+        return Math.rint((double)l * 10000.0D / 1024.0D) / 10000.0D;
+    }
+    private double mb(long l) {
+        return Math.rint((double)l * 10000.0D / 1048576.0D) / 10000.0D;
+    }
 }

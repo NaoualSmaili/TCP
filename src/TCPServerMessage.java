@@ -2,6 +2,7 @@ import java.io.IOException;
 
 class TCPServerMessage extends TCPServerBuilder implements Runnable {
     private String msIn;
+    private String msOut = "This is server chatting";
 
     public TCPServerMessage() {
     }
@@ -19,10 +20,10 @@ class TCPServerMessage extends TCPServerBuilder implements Runnable {
                 this.in.close();
                 this.s.close();
             }
-        } catch (Exception var4) {
+        } catch (IOException e) {
             try {
                 this.ss.close();
-            } catch (IOException e) {
+            } catch (IOException exception) {
             }
 
             System.out.println("Exception TCPServerMessage");

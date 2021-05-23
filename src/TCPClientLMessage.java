@@ -6,10 +6,9 @@ public class TCPClientLMessage extends TCPClientBuilder implements Runnable{
     public void run() {
         try {
             this.setSocket();
-            System.out.println("TCPClientLMsg launched ...");
+            System.out.println("TCPClientLMessage launched ...");
             this.out = this.s.getOutputStream();
             this.loopWriteMessage(this.out, 65536);
-            out.flush();
             this.out.close();
             this.s.close();
         } catch (IOException e) {

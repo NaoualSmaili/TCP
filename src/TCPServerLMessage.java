@@ -9,20 +9,21 @@ public class TCPServerLMessage extends TCPServerBuilder implements Runnable{
     public void run() {
         try {
             this.setSocket();
-            System.out.println("TCPServerLMsg launched ...");
+            System.out.println("TCPServerLMessage launched ...");
 
             while(true){
                 this.s = this.ss.accept();
+                s.setSoTimeout(1000);
+                setStreamBuffer(this.s.getReceiveBufferSize());
                 this.in = this.s.getInputStream();
-                this.msIn = this.readMessage(this.in);
-                System.out.println(this.msIn);
+                this.loopReadMessage(this.in);
                 this.in.close();
                 this.s.close();
             }
-        } catch (Exception var4) {
+        } catch (IOException e) {
             try {
                 this.ss.close();
-            } catch (IOException e) {
+            } catch (IOException exception) {
             }
 
             System.out.println("Exception TCPServerLMessage");
